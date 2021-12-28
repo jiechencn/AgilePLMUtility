@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf8">
+		<title>Encryption for Agile PLM</title>
+		<link href="../common/css/bootstrap.min.css" rel="stylesheet">
+		<link href="../common/font_icon/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+		<link href="css/agile-credential.css" rel="stylesheet">
+		
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+		  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+	</head>
+<body>
+
+<div class="container">
+	<div class="page-header" id="header">
+		<div class="nav nav-pills pull-right" role="tablist">
+		</div>
+		<h1><i class="fa fa-eye-slash fa-3">&nbsp;</i>Encryption for Agile PLM</h1>
+	</div>
+	
+	<div class="page-header" id="header">
+		<p class="lead">RESET LOGIN_PWD IN AGILEUSER</p>
+		<ol>
+			<li>Run SQL to get SHA_TYPE
+				<pre><code>SELECT 
+  DECODE(value, -1, 'SHA-0', 0, 'SHA-256', 1, 'SHA-384', 2, 'SHA-512', 'SHA-0') SHA_TYPE 
+FROM 
+(
+  SELECT value FROM propertytable WHERE parentid = 5004 AND propertyid = 989
+  UNION ALL
+  SELECT '-1' FROM DUAL WHERE NOT EXISTS (SELECT value FROM propertytable WHERE parentid = 5004 AND propertyid = 989)
+);</code></pre>
+			</li>
+			
+			<li>Encrypt
+				<form class="form-inline" role="form" name="">
+					<div class="panel panel-default panelForm">
+						<div class="panel-body">
+							<div class="input-group">  
+								<div class="input-group-addon"><i class="fa fa-tags"></i></div>  
+								<select class="form-control" id="idSelSHAType">
+									<option value="SHA-0">SHA-0</option>
+									<option value="SHA-256" selected>SHA-256</option>
+									<option value="SHA-384">SHA-384</option>
+									<option value="SHA-512">SHA-512</option>
+								</select>
+							</div>
+							<div class="input-group">  
+								<div class="input-group-addon"><i class="fa fa-user"></i></div>  
+								<input class="inputAccount form-control" type="text" placeholder="Login ID" maxlength="50" id="idInputSHAUsername">
+							</div>
+							<div class="input-group">  
+								<div class="input-group-addon"><i class="fa fa-key"></i></div>  
+								<input class="form-control inputPassword" type="password" placeholder="Password" maxlength="80" id="idInputSHAPassword">
+							</div>				
+							<div class="input-group">
+								&nbsp;&nbsp;<button type="button" class="btn btn-primary" id="idBtnSHASubmit" name="save">Encrypt</button>&nbsp;
+							</div>
+						</div>
+					</div>
+				</form>
+			</li>
+			<li id="idDivSHAPassword">Save to database</li>
+		</ol>
+	</div>
+	
+	
+	<div class="page-header" id="header">
+	<p class="lead">CHECK LDAP PASSWORD IN JAVA CLIENT</P>
+	<ol>
+		<li>Encrypt or Decrypt
+				<form class="form-inline" role="form" name="">
+					<div class="panel panel-default panelForm">
+						<div class="panel-body">
+							<div class="input-group">  
+								<div class="input-group-addon"><i class="fa fa-low-vision"></i></div>  
+								<select class="form-control" id="idSelEDType">
+									<option value="e" selected>Encrypt</option>
+									<option value="d">Decrypt</option>
+								</select>
+							</div>
+							<div class="input-group">  
+								<div class="input-group-addon"><i class="fa fa-key"></i></div>  
+								<input class="form-control inputPassword" type="password" placeholder="Password" maxlength="80" id="idInputBFPassword">
+							</div>				
+							<div class="input-group">
+								&nbsp;&nbsp;<button type="button" class="btn btn-primary" id="idBtnBFSubmit" name="save">Encrypt</button>&nbsp;
+							</div>
+						</div>
+					</div>
+				</form>
+			</li>
+			
+			<li id="idDivBFPassword">Result</li>
+			<div class="alert alert-warning alert-dismissible fade in" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button> Agile 9.3.5 uses plain text password for LDAP in Java Client</div>
+		</p>
+	</div>
+	
+	
+	<div class="footer" align="center">
+		<p></p>
+	</div>
+</div>
+
+<div>
+	<div id="messageBoxClickerDiv" style="display:none">
+		<a href="#" id="messageBoxClicker" data-toggle="modal" data-target="#messageBoxID">xx</a>
+	</div>
+	<div class="modal fade" id="messageBoxID" tabindex="-1" role="dialog" aria-labelledby="modeTitle" aria-hidden="true">
+		<button type="button" class="close" style="display:none" data-dismiss="modal" id="idBtnCloseMsgBox"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+		<div class="modal-dialog alert alert-success" role="alert" id="alertTypeID">
+				<div class="modal-body" id="messageContentID"></div>
+		</div>
+	</div>
+</div>
+	
+<script src="../common/js/jquery-2.1.1.min.js"></script>
+<script src="../common/js/bootstrap.min.js"></script>
+<script src="js/agile-credential.js"></script>
+
+
+</body>
+</html>

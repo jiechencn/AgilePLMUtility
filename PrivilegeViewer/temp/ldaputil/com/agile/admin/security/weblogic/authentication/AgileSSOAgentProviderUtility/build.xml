@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+
+<project name="AgileSSOAgentIdentityAsserter_project" default="all" basedir=".">
+
+
+  <!-- global properties -->
+  <property environment="env"/>
+  <property name="lib"                 value="${env.WLS_HOME}/server/lib"/>
+  <property name="log4j"	       value="${env.LOG4J_HOME}"/>  	 
+  <property name="mbeantypes"          value="${lib}/mbeantypes"/>
+  <property name="agilessoagentproviderjar"  value="agileSSOAgentProvider.jar"/>
+  <property name="src_dir"             value="./src"/>
+  <property name="provider_src_dir"    value="${src_dir}/com/agile/admin/security/weblogic/authentication"/>
+  <property name="build_dir"           value="./build"/>
+  <property name="class_dir"           value="./classes"/>
+
+
+  <target name="all" depends="clean">
+
+    <!-- Set up the build directories -->
+    <mkdir dir="${build_dir}"/>
+    <mkdir dir="${class_dir}"/>
+
+    <!-- copy over the commo dtd -->
+    <copy todir="${build_dir}" flatten="true">
+      <fileset dir="${lib}">
+        <include name="commo.dtd"/>
+      </fileset>
+    </copy>
+    <copy todir="${build_dir}" flatten="true">
+      <fileset dir="${provider_src_dir}">
+        <include name="**/*.xml"/>
+      </fileset>
+    </copy>
+
+    <antcall target="build.mdf"> <param name="mdf" value="AgileSSOAgentIdentityAsserter.xml"  /> </antcall>
+
+    <!-- Copy over sources (they depend on generated code so they can't be copied over until now) -->
+    <copy todir="${build_dir}" flatten="true" overwrite="true">
+      <fileset dir="${provider_src_dir}">
+        <include name="**/*.java"/>
+      </fileset>
+    </copy>
+    
+   
+    <!-- Build the Agile SSO Agent Identity Asserter providers' jar file -->
+    <java classname="weblogic.management.commo.WebLogicMBeanMaker" fork="true" failonerror="true">
+      <jvmarg line="-Dfiles=${build_dir} -DMJF=${build_dir}/${agilessoagentproviderjar}"/>
+      <classpath>
+        <pathelement path="${java.class.path}"/>
+        <pathelement location="${lib}/weblogic.jar"/>
+        <pathelement location="${mbeantypes}/wlManagement.jar"/>
+        <pathelement location="./ISSOAgent.jar"/>
+        <pathelement location="${log4j}/log4j.jar"/>
+      </classpath>
+    </java>
+
+    <!-- Deploy the Agile SSO Agent Identity Asserter providers -->
+    <copy todir="${mbeantypes}" flatten="true">
+      <fileset dir="${build_dir}">
+        <include name="${agilessoagentproviderjar}"/>
+      </fileset>
+    </copy>
+    
+    <delete quiet="true" dir="${build_dir}"/>
+    <delete quiet="true" dir="${class_dir}"/>
+
+  </target>
+
+  <!-- helper to build an MDF (mbean definition file) -->
+  <target name="build.mdf">
+    <copy todir="${build_dir}" flatten="true">
+          <fileset dir="${lib}">
+            <include name="commo.dtd"/>
+          </fileset>
+    </copy>
+    
+    <copy todir="${build_dir}" flatten="true">
+          <fileset dir="./">
+            <include name="**/*.xml"/>
+          </fileset>
+    </copy>
+    
+    <java classname="weblogic.management.commo.WebLogicMBeanMaker" fork="true" failonerror="true">
+       <jvmarg line="-Dfiles=${build_dir} -DMDF=${build_dir}/${mdf} -DcreateStubs=true"/>
+     
+      <classpath>
+        <pathelement path="${java.class.path}"/>
+        <pathelement location="${build_dir}"/>
+        <pathelement location="${lib}/weblogic.jar"/>
+        <pathelement location="${mbeantypes}/wlManagement.jar"/>
+       
+      </classpath>
+    </java>
+  </target>
+
+  <target name="clean">
+    <delete quiet="true" dir="${build_dir}"/>
+    <delete quiet="true" dir="${class_dir}"/>
+    <delete quiet="true" file="${mbeantypes}/${agilessoagentproviderjar}"/>
+  </target>
+
+</project>

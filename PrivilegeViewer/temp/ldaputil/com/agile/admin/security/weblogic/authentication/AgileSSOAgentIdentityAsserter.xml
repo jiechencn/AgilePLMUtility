@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+<!DOCTYPE MBeanType SYSTEM "commo.dtd">
+
+<!-- Management Bean for the Agile Identity Asserter -->
+
+<MBeanType
+ Name          = "AgileSSOAgentIdentityAsserter"
+ DisplayName   = "AgileSSOAgentIdentityAsserter"
+ Package       = "com.agile.admin.security.weblogic.authentication"
+ Extends       = "weblogic.management.security.authentication.IdentityAsserter"
+ PersistPolicy = "OnUpdate"
+ Description   = "The MBean that represents the configuration attributes for the Agile SSO Agent Identity Asserter."           
+
+>
+
+
+ <MBeanAttribute
+  Name          = "ProviderClassName"
+  Type          = "java.lang.String"
+  Writeable     = "false"
+  Default       = "&quot;com.agile.admin.security.weblogic.authentication.AgileSSOAgentIdentityAsserterProviderImpl&quot;"
+ />
+
+ <MBeanAttribute
+  Name          = "Description"
+  Type          = "java.lang.String"
+  Writeable     = "false"
+  Default       = "&quot;Agile SSO Agent Identity Assertion Provider&quot;"
+ />
+
+ <MBeanAttribute
+  Name          = "Version"
+  Type          = "java.lang.String"
+  Writeable     = "false"
+  Default       = "&quot;1.1&quot;"
+ />
+
+ <MBeanAttribute  
+   Name 	= "SupportedTypes"
+   Type 	= "java.lang.String[]"
+   Writeable 	= "true"
+   Default 	= "new String[] { &quot;tokenType1&quot;,
+   				 &quot;tokenType2&quot;}"
+  />
+ 
+ 
+ <MBeanAttribute  
+  Name 		= "ActiveTypes"
+  Type 		= "java.lang.String[]"
+  Default 	= "new String[] {&quot;tokenType1&quot;}"
+ />
+  
+  <MBeanAttribute
+ Name= "Base64DecodingRequired"
+ Type= "boolean"
+ Writeable= "false"
+ Default= "false"
+ Description= "See MyIdentityAsserter-doc.xml."
+ />
+ 
+   
+ <MBeanAttribute  
+      Name = "SSOAgentClass"
+      Type = "java.lang.String"
+      Writeable	 = "true"
+    Description   = "specify SSOAgent class name. Please make sure it implements Interface com.agile.sso.ISSOAgent"
+ />
+ 
+ </MBeanType>

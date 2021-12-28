@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<test-cases name='Test CTOs and ATOs'>
+  <objects>
+    <test-object object-name='cto-1'>
+      <name-prefix>OP1-</name-prefix>
+      <base-class>BASECLASS_OPACKAGE</base-class>
+      <class>CLASS_OPACKAGE</class>
+      <subclass>12667</subclass>
+    </test-object>
+
+    <test-object object-name='ato-1'>
+      <name-prefix>ATO-1-</name-prefix>
+      <base-class>BASECLASS_OPACKAGE</base-class>
+      <class>CLASS_ATO</class>
+      <subclass>11923</subclass>
+    </test-object>
+  </objects>
+
+  <actions>
+    <create object-name='cto-1' action-name='create-cto-1'> </create>
+
+    <append object-name='cto-1' action-name='append-cto-1-so-1'>
+      <table>OPACKAGETABLE_SELECTEDOBJECTS</table>
+    </append>
+
+    <append object-name='cto-1' action-name='append-cto-1-p2-1'>
+      <table>OPACKAGETABLE_PAGETWO</table>
+    </append>
+
+    <append object-name='cto-1' action-name='append-cto-1-ws-1'>
+      <table>OPACKAGETABLE_WHERESENT</table>
+    </append>
+
+    <update object-name='cto-1' action-name='update-cto-1-cover-page-1'>
+      <table>OPACKAGETABLE_COVERPAGE</table>
+      <row-name>create-cto-1</row-name>
+      <attribute>
+        <name>ATT_OPACKAGE_DESCRIPTION</name>
+        <write-value>Outbound Pkg Descr 1.1</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_WORKFLOW_ID</name>
+        <write-value>Default CTOs</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_ORIGINATOR</name>
+        <write-value>Yvonne Chau</write-value>
+        <read-value> Yvonne Chau</read-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_DATE_ORIGINATED</name>
+        <write-value>$current-date</write-value>
+      </attribute>
+    </update>
+
+    <update object-name='cto-1' action-name='update-cto-1-so-1'>
+      <table>OPACKAGETABLE_SELECTEDOBJECTS</table>
+      <row-name>append-cto-1-so-1</row-name>
+      <attribute>
+        <name>ATT_OPACKAGE_SO_TYPE</name>
+        <write-value>Part</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_SO_NUMBER</name>
+        <write-value>9876-01</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_SO_REV</name>
+        <write-value>27280</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_SO_DESCR</name>
+        <write-value>IDE Hard Disk Controller</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_SO_SITE</name>
+        <write-value>San Jose</write-value>
+      </attribute>
+    </update>
+
+    <load-table object-name='cto-1' action-name='load-table-cto-1-so-1'>
+      <table>OPACKAGETABLE_SELECTEDOBJECTS</table>
+      <start-at>0</start-at>
+      <range>10</range>
+      <options>1</options>
+      <sorting-range>1000</sorting-range>
+      <sorting-attr-id>0</sorting-attr-id>
+      <sorting-flag>0</sorting-flag>
+      <change-id>-1</change-id>
+      <site>0</site>
+      <update-name>update-cto-1-so-1</update-name>
+    </load-table>
+
+    <update object-name='cto-1' action-name='update-cto-1-p2-1'>
+      <table>OPACKAGETABLE_PAGETWO</table>
+      <row-name>append-cto-1-p2-1</row-name>
+    </update>
+
+    <load-table object-name='cto-1' action-name='load-table-cto-1-p2-1'>
+      <table>OPACKAGETABLE_PAGETWO</table>
+      <start-at>0</start-at>
+      <range>10</range>
+      <options>1</options>
+      <sorting-range>1000</sorting-range>
+      <sorting-attr-id>0</sorting-attr-id>
+      <sorting-flag>0</sorting-flag>
+      <change-id>-1</change-id>
+      <site>0</site>
+      <update-name>update-cto-1-p2-1</update-name>
+    </load-table>
+
+    <update object-name='cto-1' action-name='update-cto-1-ws-1'>
+      <table>OPACKAGETABLE_WHERESENT</table>
+      <row-name>append-cto-1-ws-1</row-name>
+      <attribute>
+        <name>ATT_OPACKAGE_WS_DEST</name>
+        <write-value>Example Destination</write-value>
+        <read-value>Example Destination</read-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_WS_DATE_SENT</name>
+        <write-value>$current-date</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_WS_TRANS_STATUS</name>
+        <write-value>-17</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_WS_TRANS_NOTES</name>
+        <write-value>Transfer note 1</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_WS_FILTERS</name>
+        <write-value>Example Filter</write-value>
+        <read-value>Example Filter</read-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_WS_ROLES</name>
+        <write-value>Creator;Incorporator;Change Analyst</write-value>
+        <read-value>Creator;Incorporator;Change Analyst</read-value>
+      </attribute>
+    </update>
+
+
+
+    <create object-name='ato-1' action-name='create-ato-1'> </create>
+
+    <append object-name='ato-1' action-name='append-ato-1-so-1'>
+      <table>OPACKAGETABLE_SELECTEDOBJECTS</table>
+    </append>
+
+    <append object-name='ato-1' action-name='append-ato-1-ws-1'>
+      <table>OPACKAGETABLE_WHERESENT</table>
+    </append>
+
+    <update object-name='ato-1' action-name='update-ato-1-cover-page-1'>
+      <table>OPACKAGETABLE_COVERPAGE</table>
+      <row-name>create-ato-1</row-name>
+      <attribute>
+        <name>ATT_OPACKAGE_DESCRIPTION</name>
+        <write-value>Outbound Pkg Descr 1.1</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_WORKFLOW_ID</name>
+        <write-value>Default ATOs</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_ORIGINATOR</name>
+        <write-value>Yvonne Chau</write-value>
+        <read-value> Yvonne Chau</read-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_DATE_ORIGINATED</name>
+        <write-value>$current-date</write-value>
+      </attribute>
+    </update>
+
+    <update object-name='ato-1' action-name='update-ato-1-so-1'>
+      <table>OPACKAGETABLE_SELECTEDOBJECTS</table>
+      <row-name>append-ato-1-so-1</row-name>
+      <attribute>
+        <name>ATT_OPACKAGE_SO_TYPE</name>
+        <write-value>Part</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_SO_NUMBER</name>
+        <write-value>9876-01</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_SO_REV</name>
+        <write-value>27280</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_SO_DESCR</name>
+        <write-value>IDE Hard Disk Controller</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_SO_SITE</name>
+        <write-value>San Jose</write-value>
+      </attribute>
+    </update>
+
+    <update object-name='ato-1' action-name='update-ato-1-ws-1'>
+      <table>OPACKAGETABLE_WHERESENT</table>
+      <row-name>append-ato-1-ws-1</row-name>
+      <attribute>
+        <name>ATT_OPACKAGE_WS_DEST</name>
+        <write-value>Example Destination</write-value>
+        <read-value>Example Destination</read-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_WS_DATE_SENT</name>
+        <write-value>$current-date</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_WS_TRANS_STATUS</name>
+        <write-value>-17</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_WS_TRANS_NOTES</name>
+        <write-value>Transfer note 1</write-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_WS_FILTERS</name>
+        <write-value>Example Filter</write-value>
+        <read-value>Example Filter</read-value>
+      </attribute>
+      <attribute>
+        <name>ATT_OPACKAGE_WS_ROLES</name>
+        <write-value>Creator;Incorporator;Change Analyst</write-value>
+        <read-value>Creator;Incorporator;Change Analyst</read-value>
+      </attribute>
+    </update>
+  </actions>
+
+  <scripts>
+    <script name='Test CTO'>
+      <step action-name='create-cto-1'></step>
+      <step action-name='append-cto-1-so-1'></step>
+      <step action-name='append-cto-1-ws-1'></step>
+      <step action-name='update-cto-1-cover-page-1'></step>
+      <step action-name='update-cto-1-so-1'></step>
+      <step action-name='load-table-cto-1-so-1'></step>
+      <step action-name='update-cto-1-ws-1'></step>
+      <step action-name='append-cto-1-p2-1'></step>
+      <step action-name='update-cto-1-p2-1'></step>
+      <step action-name='load-table-cto-1-p2-1'></step>
+    </script>
+
+    <script name='Test ATO'>
+      <step action-name='create-ato-1'></step>
+      <step action-name='append-ato-1-so-1'></step>
+      <step action-name='append-ato-1-ws-1'></step>
+      <step action-name='update-ato-1-cover-page-1'></step>
+      <step action-name='update-ato-1-so-1'></step>
+      <step action-name='update-ato-1-ws-1'></step>
+    </script>
+  </scripts>
+</test-cases>

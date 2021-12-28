@@ -1,0 +1,2 @@
+pv.license= java -cp . zigzagsoft.license.LicenseUtil en db.url db.user
+pv.validator=md5(pv.license)

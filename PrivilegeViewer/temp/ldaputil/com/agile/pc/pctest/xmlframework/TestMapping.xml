@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<mapping>
+  <description>Mapping for OutPackage Tests</description>
+  <class name="com.agile.pc.pctest.xmlframework.TestCases">
+    <map-to xml="test-cases"/>
+    <field name="name" type="java.lang.String">
+      <bind-xml name="name" node="attribute"/>
+    </field>
+    <field name="testObjects" type="com.agile.pc.pctest.xmlframework.TestObjects">
+      <bind-xml name="objects" node="element"/>
+    </field>
+    <field name="actions" type="com.agile.pc.pctest.xmlframework.Actions">
+      <bind-xml name="actions" node="element"/>
+    </field>
+    <field name="scripts" type="com.agile.pc.pctest.xmlframework.Scripts">
+      <bind-xml name="scripts" node="element"/>
+    </field>
+  </class>
+
+  <class name="com.agile.pc.pctest.xmlframework.TestObjects">
+    <map-to xml="objects"/>
+    <field name="objects" collection="collection"
+           type="com.agile.pc.pctest.xmlframework.TestObject">
+      <bind-xml name="test-object" node="element"/>
+    </field>
+  </class>
+
+  <class name="com.agile.pc.pctest.xmlframework.Actions">
+    <map-to xml="actions"/>
+    <field name="creates" collection="collection"
+           type="com.agile.pc.pctest.xmlframework.CreateSpec">
+      <bind-xml name="create" node="element"/>
+    </field>
+    <field name="appends" collection="collection"
+           type="com.agile.pc.pctest.xmlframework.AppendSpec">
+      <bind-xml name="append" node="element"/>
+    </field>
+    <field name="loadTables" collection="collection"
+           type="com.agile.pc.pctest.xmlframework.LoadTableSpec">
+      <bind-xml name="load-tables" node="element"/>
+    </field>
+    <field name="updates" collection="collection"
+           type="com.agile.pc.pctest.xmlframework.UpdateSpec">
+      <bind-xml name="update" node="element"/>
+    </field>
+  </class>
+
+  <class name="com.agile.pc.pctest.xmlframework.Scripts">
+    <map-to xml="scripts"/>
+    <field name="scripts" collection="collection"
+           type="com.agile.pc.pctest.xmlframework.Script">
+      <bind-xml name="script" node="element"/>
+    </field>
+  </class>
+
+  <class name="com.agile.pc.pctest.xmlframework.TestObject">
+    <map-to xml="test-object"/>
+    <field name="name" type="java.lang.String">
+      <bind-xml name="object-name" node="attribute"/>
+    </field>
+    <field name="namePrefix" type="java.lang.String">
+      <bind-xml name="name-prefix" node="element"/>
+    </field>
+    <field name="baseClass" type="java.lang.String">
+      <bind-xml name="base-class" node="element"/>
+    </field>
+    <field name="objClass" type="java.lang.String">
+      <bind-xml name="class" node="element"/>
+    </field>
+    <field name="subClass" type="java.lang.String">
+      <bind-xml name="subclass" node="element"/>
+    </field>
+  </class>
+
+  <class name="com.agile.pc.pctest.xmlframework.CreateSpec">
+    <map-to xml="create"/>
+    <field name="objectName" type="java.lang.String">
+      <bind-xml name="object-name" node="attribute"/>
+    </field>
+    <field name="actionName" type="java.lang.String">
+      <bind-xml name="action-name" node="attribute"/>
+    </field>
+  </class>
+
+  <class name="com.agile.pc.pctest.xmlframework.AppendSpec">
+    <map-to xml="append"/>
+    <field name="objectName" type="java.lang.String">
+      <bind-xml name="object-name" node="attribute"/>
+    </field>
+    <field name="actionName" type="java.lang.String">
+      <bind-xml name="action-name" node="attribute"/>
+    </field>
+    <field name="table" type="java.lang.String">
+      <bind-xml name="table" node="element"/>
+    </field>
+  </class>
+
+  <class name="com.agile.pc.pctest.xmlframework.LoadTableSpec">
+    <map-to xml="load-table"/>
+    <field name="objectName" type="java.lang.String">
+      <bind-xml name="object-name" node="attribute"/>
+    </field>
+    <field name="actionName" type="java.lang.String">
+      <bind-xml name="action-name" node="attribute"/>
+    </field>
+    <field name="table" type="java.lang.String">
+      <bind-xml name="table" node="element"/>
+    </field>
+    <field name="startAt" type="integer">
+      <bind-xml name="start-at" node="element"/>
+    </field>
+    <field name="range" type="integer">
+      <bind-xml name="range" node="element"/>
+    </field>
+    <field name="options" type="integer">
+      <bind-xml name="options" node="element"/>
+    </field>
+    <field name="sortingRange" type="integer">
+      <bind-xml name="sorting-range" node="element"/>
+    </field>
+    <field name="sortingAttrID" type="integer">
+      <bind-xml name="sorting-attr-id" node="element"/>
+    </field>
+    <field name="sortingFlag" type="integer">
+      <bind-xml name="sorting-flag" node="element"/>
+    </field>
+    <field name="changeID" type="integer">
+      <bind-xml name="change-id" node="element"/>
+    </field>
+    <field name="site" type="java.lang.String">
+      <bind-xml name="site" node="element"/>
+    </field>
+    <field name="updateName" type="java.lang.String">
+      <bind-xml name="update-name" node="element"/>
+    </field>
+  </class>
+
+  <class name="com.agile.pc.pctest.xmlframework.UpdateSpec">
+    <map-to xml="update"/>
+    <field name="objectName" type="java.lang.String">
+      <bind-xml name="object-name" node="attribute"/>
+    </field>
+    <field name="actionName" type="java.lang.String">
+      <bind-xml name="action-name" node="attribute"/>
+    </field>
+    <field name="rowName" type="java.lang.String">
+      <bind-xml name="row-name" node="element"/>
+    </field>
+    <field name="table" type="java.lang.String">
+      <bind-xml name="table" node="element"/>
+    </field>
+    <field name="attributes" collection="collection"
+           type="com.agile.pc.pctest.xmlframework.Attribute">
+      <bind-xml name="attribute" node="element"/>
+    </field>
+  </class>
+
+  <class name="com.agile.pc.pctest.xmlframework.Script">
+    <map-to xml="script"/>
+    <field name="name" type="java.lang.String">
+      <bind-xml name="name" node="attribute"/>
+    </field>
+    <field name="steps" collection="collection"
+           type="com.agile.pc.pctest.xmlframework.Step">
+      <bind-xml name="step" node="element"/>
+    </field>
+  </class>
+
+  <class name="com.agile.pc.pctest.xmlframework.Attribute">
+    <map-to xml="attribute"/>
+    <field name="name" type="java.lang.String">
+      <bind-xml name="name" node="element"/>
+    </field>
+    <field name="writeValue" type="java.lang.String">
+      <bind-xml name="write-value" node="element"/>
+    </field>
+    <field name="readValue" type="java.lang.String">
+      <bind-xml name="read-value" node="element"/>
+    </field>
+  </class>
+
+  <class name="com.agile.pc.pctest.xmlframework.Step">
+    <map-to xml="step"/>
+    <field name="actionName" type="java.lang.String">
+      <bind-xml name="action-name" node="attribute"/>
+    </field>
+  </class>
+</mapping>

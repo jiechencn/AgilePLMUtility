@@ -1,0 +1,6 @@
+1. extract AgileSSOValidator.zip to AGILE_HOME/agileDomain/bin/ folder
+2. Open Command Prompt and run AgileSSOValidator.cmd file with below parameter
+AgileSSOValidator.cmd <j_username> <j_password>
+
+For example:
+AgileSSOValidator.cmd e0FFUzoxMjh9ODgzQkQyRTkwQUIyOUI3NzY4NzBGREU3MUIzQUY3MjE4MDI3 JSUle0FFUzoxMjh9MTdDQkJFQzIzRjdCQzM4MjA3MzhCMzc4QTE2QjlBMjJDRjNERDgxMTY1Qjg4RTg1Q0FCQ0ZCRDQ4QjA2NTlDQ0U4MTlFOTJDRjhDRDg1M0E2QUZDMjFFNEY0NzY5QUUzN0JGODY4QkQwMkI4NzU4NTUyQjk3MzlDNjNBOEE2MUMzMkYxJSUl

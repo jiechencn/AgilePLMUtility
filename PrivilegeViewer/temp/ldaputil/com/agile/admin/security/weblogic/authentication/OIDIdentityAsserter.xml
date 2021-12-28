@@ -1,0 +1,77 @@
+<?xml version="1.0" ?>
+<!DOCTYPE MBeanType SYSTEM "commo.dtd">
+
+<!-- Management Bean for the OID Identity Asserter -->
+
+<MBeanType
+ Name          = "OIDIdentityAsserter"
+ DisplayName   = "OIDIdentityAsserter"
+ Package       = "com.agile.admin.security.weblogic.authentication"
+ Extends       = "weblogic.management.security.authentication.IdentityAsserter"
+ PersistPolicy = "OnUpdate"
+ Description   = "The MBean that represents the configuration attributes for the OID Identity Asserter."           
+
+>
+
+
+ <MBeanAttribute
+  Name          = "ProviderClassName"
+  Type          = "java.lang.String"
+  Writeable     = "false"
+  Default       = "&quot;com.agile.admin.security.weblogic.authentication.OIDIdentityAsserterProviderImpl&quot;"
+ />
+
+ <MBeanAttribute
+  Name          = "Description"
+  Type          = "java.lang.String"
+  Writeable     = "false"
+  Default       = "&quot;OID Identity Assertion Provider&quot;"
+ />
+
+ <MBeanAttribute
+  Name          = "Version"
+  Type          = "java.lang.String"
+  Writeable     = "false"
+  Default       = "&quot;1.1&quot;"
+ />
+
+ <MBeanAttribute  
+   Name 	= "SupportedTypes"
+   Type 	= "java.lang.String[]"
+   Writeable 	= "false"
+   Default 	= "new String[] {com.agile.admin.security.weblogic.authentication.TokenType.AGILESSO_TOKEN,   				    				 
+   				 com.agile.admin.security.weblogic.authentication.TokenType.OID_HEADER_TOKEN
+   				 }"
+  />
+ 
+ 
+ <MBeanAttribute  
+  Name 		= "ActiveTypes"
+  Type 		= "java.lang.String[]"
+  Default 	= "new String[] {com.agile.admin.security.weblogic.authentication.TokenType.OID_HEADER_TOKEN}"
+ />
+  
+  <MBeanAttribute
+ Name= "Base64DecodingRequired"
+ Type= "boolean"
+ Writeable= "false"
+ Default= "false"
+ Description= "See MyIdentityAsserter-doc.xml."
+ /> 
+  
+  <MBeanAttribute  
+       Name = "OIDHeaderToken"
+       Type = "java.lang.String"
+       Writeable	 = "true"
+     Description   = "Specify the OAM header token name if available"
+ />
+   
+ <MBeanAttribute  
+      Name = "SSOAgentClass"
+      Type = "java.lang.String"
+      Writeable	 = "true"
+    Description   = "specify SSOAgent class name. Please make sure it implements Interface com.agile.sso.ISSOAgent"
+ /> 
+
+ 
+ </MBeanType>

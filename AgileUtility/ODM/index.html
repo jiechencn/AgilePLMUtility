@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv=Content-Type content="text/html; charset=utf8">
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/odm.css" rel="stylesheet">
+	<script src="js/jquery-3.1.0.min.js"></script>
+	<script src="js/bootstrap.tooltip.js"></script>
+	<script src="js/bootstrap.popover.js"></script>
+	<title>ODM Workflow Demonstration</title>
+
+</head>
+<body>
+<div class="container">
+	<div class="page-header" id="header">
+		<div class="nav nav-pills pull-right" role="tablist">
+		</div>
+		<h1>ODM Workflow Demonstration</h1>
+	</div>
+
+	<div>
+		<img src="img/odm_flow.png" class="image-map"  usemap="#Map" />
+		<map name="Map" id="Map">
+			<area id="1" title="Action Plan" shape="rect" coords="90,137,165,165"/>
+			<area id="2" title="Data Collection" shape="rect" coords="241,62,313,92"/>
+			<area id="3" title="Data Collection" shape="rect" coords="336,62,421,93" />
+			<area id="4" title="Data Collection" alt="bbb" shape="rect" coords="441,62,527,94" />
+			<area id="5" title="Data Collection" shape="rect" coords="545,61,631,94" />
+			<area id="6" title="Data Collection" shape="rect" coords="652,61,737,92" />
+			<area id="7" title="Issue Clarification" shape="rect" coords="237,130,313,158" />
+			<area id="8" title="Issue Verification" shape="rect" coords="238,192,310,224" />
+			<area id="9" title="Action Plan" shape="rect" coords="385,265,459,295" />
+			<area id="10" title="Data Collection" shape="rect" coords="485,267,558,297" />
+			<area id="11" title="Research (Search)" shape="rect" coords="170,341,263,371" />
+			<area id="12" title="Research (Analysis)" shape="rect" coords="298,341,392,373" />
+			<area id="13" title="Cause Determination" shape="rect" coords="237,406,311,435" />
+			<area id="14" title="Cause Justification" shape="rect" coords="238,470,311,501" />
+			<area id="15" title="Research (Test Case)" shape="rect" coords="355,500,449,529" />
+			<area id="16" title="Proposed Solution" shape="rect" coords="237,536,312,565" />
+			<area id="17" title="Proposed Solution Justification" shape="rect" coords="239,599,310,630" />
+			<area id="18" title="Solution Action Plan" shape="rect" coords="237,666,313,697" />
+			<area id="19" title="Data Collection" shape="rect" coords="395,736,469,766" />
+			<area id="20" title="Research" shape="rect" coords="490,735,564,766" />
+			<area id="21" title="Action Plan" shape="rect" coords="582,737,657,766" />
+			<area id="22" title="Knowledge Management" shape="rect" coords="231,809,306,841" />
+		</map>
+	</div>
+	
+	<div>
+		<p class="lead">Note
+		<ul>
+			<li>Do not use "ODM Test Case" because it is not searchable in My Oracle Support</li>
+			<li>Action Plan (AP) and Solution Action Plan should start with Hi/Hello</li>
+			<li>In IC tag, do not miss BUSINESS IMPACT</li>
+			<li>The first ODM tag is AP or DC. Others are not correct.</li>
+		</ul>
+		</p>
+	</div>
+	<div>
+		<p class="lead">
+		</p>
+	</div>
+	
+	<div class="footer" align="center">
+		<p>Feel free to contact <a href="mailto:jie.chen@oracle.com">jie.chen@oracle.com</a> for any ODM clarification</p>
+	</div>
+
+</div>
+
+
+<script src="js/odm.js"></script>
+</body>
+
+</html>

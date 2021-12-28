@@ -1,0 +1,102 @@
+<?xml version="1.0" ?>
+<!DOCTYPE MBeanType SYSTEM "commo.dtd">
+
+<!-- Management Bean for the Agile Identity Asserter -->
+
+<MBeanType
+ Name          = "AgileIdentityAsserter"
+ DisplayName   = "AgileIdentityAsserter"
+ Package       = "com.agile.admin.security.weblogic.authentication"
+ Extends       = "weblogic.management.security.authentication.IdentityAsserter"
+ PersistPolicy = "OnUpdate"
+ Description   = "The MBean that represents the configuration attributes for the Agile Identity Asserter."           
+
+>
+
+
+ <MBeanAttribute
+  Name          = "ProviderClassName"
+  Type          = "java.lang.String"
+  Writeable     = "false"
+  Default       = "&quot;com.agile.admin.security.weblogic.authentication.AgileIdentityAsserterProviderImpl&quot;"
+ />
+
+ <MBeanAttribute
+  Name          = "Description"
+  Type          = "java.lang.String"
+  Writeable     = "false"
+  Default       = "&quot;Agile Identity Assertion Provider&quot;"
+ />
+
+ <MBeanAttribute
+  Name          = "Version"
+  Type          = "java.lang.String"
+  Writeable     = "false"
+  Default       = "&quot;1.1&quot;"
+ />
+
+ <MBeanAttribute  
+   Name 	= "SupportedTypes"
+   Type 	= "java.lang.String[]"
+   Writeable 	= "false"
+   Default 	= "new String[] {com.agile.admin.security.weblogic.authentication.TokenType.AGILESSO_TOKEN, 
+   				 com.agile.admin.security.weblogic.authentication.TokenType.OAM_COOKIE_TOKEN,
+   				 com.agile.admin.security.weblogic.authentication.TokenType.OAM_HEADER_TOKEN,
+   				 com.agile.admin.security.weblogic.authentication.TokenType.AGILE_PROXY_NTLM_TOKEN}"
+  />
+ 
+ 
+ <MBeanAttribute  
+  Name 		= "ActiveTypes"
+  Type 		= "java.lang.String[]"
+  Default 	= "new String[] {com.agile.admin.security.weblogic.authentication.TokenType.AGILESSO_TOKEN}"
+ />
+  
+  <MBeanAttribute
+ Name= "Base64DecodingRequired"
+ Type= "boolean"
+ Writeable= "false"
+ Default= "false"
+ Description= "See MyIdentityAsserter-doc.xml."
+ />
+ 
+ <MBeanAttribute  
+     Name = "OAMSDKInstallDir"
+     Type = "java.lang.String"
+     Default = "&quot;D:\\agile\\oam\\AccessServerSDK&quot;"
+     Writeable	 = "true"
+   Description   = "Specify the OAM SDK install directory"
+ />
+ 
+  <MBeanAttribute  
+       Name = "OAMHeaderToken"
+       Type = "java.lang.String"
+       Writeable	 = "true"
+     Description   = "Specify the OAM header token name if available"
+ />
+   
+ <MBeanAttribute  
+      Name = "SSOAgentClass"
+      Type = "java.lang.String"
+      Writeable	 = "true"
+    Description   = "specify SSOAgent class name. Please make sure it implements Interface com.agile.sso.ISSOAgent"
+ />
+ 
+ <!--MBeanAttribute
+   Name        = "UserNameMapperAttributeString"
+   Type        = "java.lang.String"
+   Default     = "&quot;UID&quot;"
+   Writeable   = "true"
+   Description  = "The name of the attribute from the subject DN to use when mapping from 
+                   the X.509 certificate to a valid user name."
+  />
+  
+  <MBeanAttribute  
+    Name = "AgileAgentConfigFile"
+    Type = "java.lang.String"
+    Writeable	 = "true"
+    Default 	 = "&quot;SmHost.conf&quot;"
+   Description   = "Specify the path to Agile SiteMinder Agent configuration file."
+ /-->
+ 
+ </MBeanType>
